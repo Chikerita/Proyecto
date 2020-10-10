@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour{
@@ -19,6 +17,10 @@ public class UIController : MonoBehaviour{
     // Update is called once per frame
     void Update() {
         
+    }
+
+    public void zzzzzzzz(InputField input, float value){
+        input.text = "20";
     }
 
     public void updateAngleInput(float value){
