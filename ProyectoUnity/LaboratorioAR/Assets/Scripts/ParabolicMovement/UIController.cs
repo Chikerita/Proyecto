@@ -7,6 +7,12 @@ public class UIController : MonoBehaviour{
     public Slider angleSlider;
     public InputField velInput;
     public Slider velSlider;
+    public InputField heightInput;
+    public Slider heightSlider;
+    public InputField wallDistanceInput;
+    public Slider wallDistanceSlider;
+    public InputField targetDistanceInput;
+    public Slider targetDistanceSlider;
     public Text statsLabel;
 
     // Start is called before the first frame update
@@ -19,8 +25,28 @@ public class UIController : MonoBehaviour{
         
     }
 
-    public void zzzzzzzz(InputField input, float value){
-        input.text = "20";
+    public void updateTargetDistanceInput(float value){
+        targetDistanceInput.text = value.ToString();
+    }
+
+    public void updateTargetDistanceSlider(string text){
+        targetDistanceSlider.value = float.Parse(text);
+    }
+
+    public void updateWallHeightInput(float value){
+        heightInput.text = value.ToString();
+    }
+
+    public void updateWallHeightSlider(string text){
+        heightSlider.value = float.Parse(text);
+    }
+
+    public void updateWallDistanceInput(float value){
+        wallDistanceInput.text = value.ToString();
+    }
+
+    public void updateWallDistanceSlider(string text){
+        wallDistanceSlider.value = float.Parse(text);
     }
 
     public void updateAngleInput(float value){
