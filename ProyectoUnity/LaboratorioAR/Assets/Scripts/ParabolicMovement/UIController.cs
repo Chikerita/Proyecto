@@ -65,8 +65,8 @@ public class UIController : MonoBehaviour{
         velSlider.value = float.Parse(text);
     }
 
-    public void updateStats(float yPosition, float xPosition){
-        statsLabel.text = string.Format("Ymax: {0}m\nXmax: {1}m\nFlight time: {2}s", yPosition.ToString("F3"), xPosition.ToString("F3"), "0");
+    public void updateStats(float yPosition, float xPosition, float flightTime){
+        statsLabel.text = string.Format("Ymax: {0}m\nXmax: {1}m\nFlight time: {2}s", yPosition.ToString("F3"), xPosition.ToString("F3"), flightTime.ToString("F3"));
     }
 
     public void resetStats(){
