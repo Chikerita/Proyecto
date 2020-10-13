@@ -3,7 +3,7 @@
 public class WallController : MonoBehaviour {
 
     public void changeHeight(float value){
-        transform.position = new Vector3(transform.position.x, value - 15.1f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, value - 15.7f, transform.position.z);
     }
 
     public void changeDistance(float value){
