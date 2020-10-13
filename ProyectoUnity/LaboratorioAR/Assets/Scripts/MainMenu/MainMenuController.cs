@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
 
+    void Start(){
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
+
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            QuitGame();
+        }
     }
 
     public void LoadLevelOne(){

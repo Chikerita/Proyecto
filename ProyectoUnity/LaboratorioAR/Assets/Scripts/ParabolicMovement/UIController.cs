@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UIController : MonoBehaviour{
 
     public InputField angleInput;
@@ -17,12 +18,14 @@ public class UIController : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
-        
+        Screen.orientation = ScreenOrientation.LandscapeRight;
     }
 
     // Update is called once per frame
     void Update() {
-        
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            
+        }
     }
 
     public void updateTargetDistanceInput(float value){
