@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour{
     public InputField targetDistanceInput;
     public Slider targetDistanceSlider;
     public Text statsLabel;
+    public GameObject testManager;
 
     // Start is called before the first frame update
     void Start(){
@@ -23,8 +24,8 @@ public class UIController : MonoBehaviour{
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            
+        if (Input.GetKeyDown(KeyCode.Q)){
+            testManager.GetComponent<TestManager>().presentQuestion();
         }
     }
 
