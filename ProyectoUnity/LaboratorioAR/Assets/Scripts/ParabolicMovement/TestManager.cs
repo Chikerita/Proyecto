@@ -4,14 +4,14 @@ using UnityEngine.UI;
 public class TestManager : MonoBehaviour {
 
     private PMQuestion question;
-    [SerializeField] Text statementText;
-    [SerializeField] GameObject cannonAngleController;
-    [SerializeField] GameObject cannonVelocityController;
-    [SerializeField] GameObject wallHeightController;
-    [SerializeField] GameObject wallDistanceController;
-    [SerializeField] GameObject targetController;
-    [SerializeField] GameObject wallToggle;
-    [SerializeField] GameObject targetToggle;
+    public GameObject statementText;
+    public GameObject cannonAngleController;
+    public GameObject cannonVelocityController;
+    public GameObject wallHeightController;
+    public GameObject wallDistanceController;
+    public GameObject targetController;
+    public GameObject wallToggle;
+    public GameObject targetToggle;
 
     // Start is called before the first frame update
     void Start() {
@@ -41,7 +41,7 @@ public class TestManager : MonoBehaviour {
     }
 
     private void prepareCannonUI(){
-        statementText.enabled = true;
+        statementText.SetActive(true);
         wallToggle.SetActive(false);
         targetToggle.SetActive(false);
         wallHeightController.SetActive(false);
@@ -50,7 +50,7 @@ public class TestManager : MonoBehaviour {
     }
 
     private void prepareWallUI(){
-        statementText.enabled = true;
+        statementText.SetActive(true);
         wallToggle.SetActive(false);
         targetToggle.SetActive(false);
         cannonAngleController.SetActive(false);
@@ -59,6 +59,17 @@ public class TestManager : MonoBehaviour {
 
     private void questionAnswered(){
 
+    }
+
+    public void endReview(){
+        statementText.SetActive(false);
+        wallToggle.SetActive(true);
+        targetToggle.SetActive(true);
+        wallHeightController.SetActive(true);
+        wallDistanceController.SetActive(true);
+        targetController.SetActive(true);
+        cannonAngleController.SetActive(true);
+        cannonVelocityController.SetActive(true);
     }
 
 }
