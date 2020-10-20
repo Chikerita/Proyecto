@@ -416,12 +416,12 @@ PrefabInstance:
     - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
       propertyPath: m_MaxValue
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
       propertyPath: m_Value
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
@@ -1438,6 +1438,7 @@ GameObject:
   - component: {fileID: 616644588}
   - component: {fileID: 616644587}
   - component: {fileID: 616644586}
+  - component: {fileID: 616644591}
   - component: {fileID: 616644590}
   m_Layer: 0
   m_Name: Wall
@@ -1532,6 +1533,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a19fdc041599741b47a2f14d45e2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &616644591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616644585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.03509226, z: 1.0000001}
+  m_Center: {x: 0, y: 0.52, z: 0}
 --- !u!1 &668890412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,7 +1697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670967638}
   m_LocalRotation: {x: 0.0831902, y: -0, z: -0, w: 0.9965337}
-  m_LocalPosition: {x: 31.98, y: 18.22, z: -32.3}
+  m_LocalPosition: {x: 36.7, y: 25.67, z: -40.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1732,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f52e5349b7f710409cd4caf67f4f15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statementText: {fileID: 421139742}
+  statementText: {fileID: 0}
   cannonAngleController: {fileID: 7495889661626945627}
   cannonVelocityController: {fileID: 174017313}
   wallHeightController: {fileID: 1344193488}
@@ -2448,7 +2462,7 @@ Transform:
   m_GameObject: {fileID: 1105963436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 45, y: -0.9, z: 0}
-  m_LocalScale: {x: 5, y: 0.5, z: 5}
+  m_LocalScale: {x: 3, y: 0.5, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
