@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f52e5349b7f710409cd4caf67f4f15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statementText: {fileID: 0}
+  statementText: {fileID: 421139740}
   cannonAngleController: {fileID: 7495889661626945627}
   cannonVelocityController: {fileID: 174017313}
   wallHeightController: {fileID: 1344193488}
@@ -1974,7 +1974,7 @@ PrefabInstance:
     - target: {fileID: 7495889661860611001, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
       propertyPath: m_Text
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7495889661860611001, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
@@ -1999,12 +1999,12 @@ PrefabInstance:
     - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
       propertyPath: m_Value
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
       propertyPath: m_MaxValue
-      value: 85
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
@@ -4025,6 +4025,11 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: updateTargetDistanceSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 7495889661860611001, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
+        type: 3}
+      propertyPath: m_Text
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7495889661999668382, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4054,6 +4059,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: changeDistance
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495889662125348744, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
+        type: 3}
+      propertyPath: m_Value
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7495889662125348758, guid: 6c7f7d7ea33db1c439fdaf4475379d5a,
         type: 3}
