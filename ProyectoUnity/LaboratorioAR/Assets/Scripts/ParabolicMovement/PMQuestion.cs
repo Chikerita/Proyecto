@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PMQuestion {
 
     public const string CANNON_TYPE  = "cannon";
     public const string GRAVITY_TYPE = "gravity";
     public const string WALL_TYPE = "wall";
+    private const string SIMULATION = "ParabolicMovement";
     private string type;
     private string statement;
     private float angle;
