@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour{
     public Text statsLabel;
     public GameObject testManager;
     public PauseMenuController pauseMenu;
+    public GameObject answerMenu;
     public static bool inReview = false;
 
     // Start is called before the first frame update
@@ -33,6 +34,17 @@ public class UIController : MonoBehaviour{
                 pauseMenu.resume();
             }
         }
+    }
+
+    public void checkAnswer(){
+        if(TestManager.questionAnswered()){
+            answerMenu.transform.GetChild(0).GetComponent<Text>().text = "Respuesta correcta";
+            answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Siguiente pregunta";
+        } else {
+            answerMenu.transform.GetChild(0).GetComponent<Text>().text = "Respuesta incorrecta";
+            answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Reintentar pregunta";
+        }
+        answerMenu.SetActive(true);
     }
 
     public void updateTargetDistanceInput(float value){

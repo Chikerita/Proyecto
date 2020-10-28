@@ -2,11 +2,19 @@
 
 public class WallController : MonoBehaviour {
 
+    public static bool hit;
+
+    void OnCollisionEnter(Collision collisionInfo){
+        if(collisionInfo.collider.name.CompareTo("Bullet") == 0){
+            hit = true;
+        }
+    }
+
     public void changeHeight(float value){
-        transform.position = new Vector3(transform.position.x, value - 15.7f, transform.position.z);
+        transform.parent.position = new Vector3(transform.parent.position.x, value - 15.7f, transform.parent.position.z);
     }
 
     public void changeDistance(float value){
-        transform.position = new Vector3(value + 6f, transform.position.y, transform.position.z);
+        transform.parent.position = new Vector3(value, transform.parent.position.y, transform.parent.position.z);
     }
 }

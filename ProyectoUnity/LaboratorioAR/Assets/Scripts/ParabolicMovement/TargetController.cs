@@ -1,12 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TargetController : MonoBehaviour
-{
+public class TargetController : MonoBehaviour {
+
+    public static bool hit;
+
+    void OnCollisionEnter(Collision collisionInfo){
+        if(collisionInfo.collider.name.CompareTo("Bullet") == 0){
+            hit = true;
+        }
+    }
 
     public void changeDistance(float value){
-        gameObject.transform.position = new Vector3(value + 6f, transform.position.y, transform.position.z);
+        gameObject.transform.position = new Vector3(value, transform.position.y, transform.position.z);
     }
 
 }

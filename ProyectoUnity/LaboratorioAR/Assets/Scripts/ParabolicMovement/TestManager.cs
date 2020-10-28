@@ -12,6 +12,7 @@ public class TestManager : MonoBehaviour {
     public GameObject targetController;
     public GameObject wallToggle;
     public GameObject targetToggle;
+    public GameObject wallContainer;
 
     // Start is called before the first frame update
     void Start() {
@@ -24,6 +25,7 @@ public class TestManager : MonoBehaviour {
     }
 
     public void presentQuestion(){
+        wallContainer.SetActiveRecursively(true);
         question = new PMQuestion();
         statementText.GetComponent<Text>().text = question.Statement;
         if (question.Type.CompareTo(PMQuestion.CANNON_TYPE) == 0){
@@ -57,8 +59,9 @@ public class TestManager : MonoBehaviour {
         cannonVelocityController.SetActive(false);
     }
 
-    private void questionAnswered(){
-
+    public static bool questionAnswered(){
+        if (TargetController.hit && WallController.hit) return true;
+        else return false;
     }
 
     public void endReview(){

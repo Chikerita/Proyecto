@@ -8,10 +8,6 @@ public class PauseMenuController : MonoBehaviour
     public static bool isPaused = false;
     public TestManager testManager;
     public Button modeButton;
-    // Update is called once per frame
-    void Update() {
-        
-    }
 
     public void pause(){
         gameObject.SetActive(true);
