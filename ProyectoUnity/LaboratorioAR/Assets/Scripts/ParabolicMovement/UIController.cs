@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour{
 
@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour{
     public InputField targetDistanceInput;
     public Slider targetDistanceSlider;
     public Text statsLabel;
-    public GameObject testManager;
+    public TestManager testManager;
     public PauseMenuController pauseMenu;
     public GameObject answerMenu;
     public static bool inReview = false;
@@ -38,13 +38,23 @@ public class UIController : MonoBehaviour{
 
     public void checkAnswer(){
         answerMenu.SetActive(true);
-        if(TestManager.questionAnswered()){
+        testManager.questionAnswered();
+        if(testManager.Question.solved){
             answerMenu.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Respuesta correcta";
             answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Siguiente pregunta";
         } else {
             answerMenu.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Respuesta incorrecta";
             answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Reintentar pregunta";
         }
+    }
+
+    public void exitToMainMenu(){
+        SceneManager.LoadScene(0);
+    }
+
+    public void questionMenu(){
+        if(testManager.Question.solved) testManager.presentQuestion();
+        answerMenu.SetActive(false);
     }
 
     public void updateTargetDistanceInput(float value){

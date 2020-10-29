@@ -5,7 +5,6 @@ public class WallController : MonoBehaviour {
     public static bool hit;
 
     void OnTriggerEnter(Collider triggerInfo){
-        Debug.Log("Wall + " + triggerInfo.name);
         if(triggerInfo.name.CompareTo("Bullet") == 0){
             hit = true;
         }

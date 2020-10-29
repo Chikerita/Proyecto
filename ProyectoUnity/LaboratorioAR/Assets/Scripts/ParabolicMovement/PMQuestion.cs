@@ -15,6 +15,7 @@ public class PMQuestion {
     private float maxHeight;
     private float midlePoint;
     private float gravity;
+    public bool solved;
 
     public PMQuestion(){
             angle = Random.Range(20.0f, 75.0f);
@@ -39,6 +40,7 @@ public class PMQuestion {
             statement = string.Format("El cañon esta dispuesto para disparar a una velociadad de {0} a un angulo de {1},"+
                                         "coloque el objetivo en la distancia maxima y la apertura de la pared a la altura maxima", velocity.ToString("F3"), angle.ToString("F3"));
         }
+        solved = false;
     }
 
     public string Type { get => type; set => type = value; }
