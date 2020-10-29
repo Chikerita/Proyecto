@@ -35,9 +35,6 @@ public class BulletController : MonoBehaviour {
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         flying = false;
-        if(UIController.inReview){
-            UI.GetComponent<UIController>().checkAnswer();
-        }
     }
 
     //Shoots the bullet whit the proper angle and initial velocity

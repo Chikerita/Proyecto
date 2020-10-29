@@ -3,10 +3,14 @@
 public class TargetController : MonoBehaviour {
 
     public static bool hit;
+    public Canvas UI;
 
     void OnCollisionEnter(Collision collisionInfo){
         if(collisionInfo.collider.name.CompareTo("Bullet") == 0){
             hit = true;
+        }
+        if(UIController.inReview){
+            UI.GetComponent<UIController>().checkAnswer();
         }
     }
 

@@ -29,8 +29,11 @@ public class TestManager : MonoBehaviour {
         question = new PMQuestion();
         statementText.GetComponent<Text>().text = question.Statement;
         if (question.Type.CompareTo(PMQuestion.CANNON_TYPE) == 0){
-            //Definir los parametros de la pared y el objetivo
-            Debug.Log("Mala suerte");
+            cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
+            cannonVelocityController.transform.GetChild(0).GetComponent<Slider>().value = question.Velocity;
+            wallHeightController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxHeight;
+            wallDistanceController.transform.GetChild(0).GetComponent<Slider>().value = question.MidlePoint;
+            targetController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxDistance;
             prepareCannonUI();
         } else if (question.Type.CompareTo(PMQuestion.WALL_TYPE) == 0){
             cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
@@ -60,6 +63,7 @@ public class TestManager : MonoBehaviour {
     }
 
     public static bool questionAnswered(){
+        Debug.Log(TargetController.hit + " " + WallController.hit);
         if (TargetController.hit && WallController.hit) return true;
         else return false;
     }

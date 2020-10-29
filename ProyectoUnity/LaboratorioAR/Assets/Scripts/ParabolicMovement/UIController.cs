@@ -26,8 +26,8 @@ public class UIController : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape) && !answerMenu.activeInHierarchy){
             if(!PauseMenuController.isPaused){
                 pauseMenu.pause();
             } else {
@@ -37,14 +37,14 @@ public class UIController : MonoBehaviour{
     }
 
     public void checkAnswer(){
+        answerMenu.SetActive(true);
         if(TestManager.questionAnswered()){
-            answerMenu.transform.GetChild(0).GetComponent<Text>().text = "Respuesta correcta";
+            answerMenu.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Respuesta correcta";
             answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Siguiente pregunta";
         } else {
-            answerMenu.transform.GetChild(0).GetComponent<Text>().text = "Respuesta incorrecta";
+            answerMenu.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Respuesta incorrecta";
             answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Reintentar pregunta";
         }
-        answerMenu.SetActive(true);
     }
 
     public void updateTargetDistanceInput(float value){
