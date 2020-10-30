@@ -12,23 +12,19 @@ public class TestManager : MonoBehaviour {
     public GameObject targetController;
     public GameObject wallToggle;
     public GameObject targetToggle;
+    public GameObject wallContainer;
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
-    }
 
     public void presentQuestion(){
+        wallContainer.SetActiveRecursively(true);
         question = new PMQuestion();
         statementText.GetComponent<Text>().text = question.Statement;
         if (question.Type.CompareTo(PMQuestion.CANNON_TYPE) == 0){
-            //Definir los parametros de la pared y el objetivo
-            Debug.Log("Mala suerte");
+            cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
+            cannonVelocityController.transform.GetChild(0).GetComponent<Slider>().value = question.Velocity;
+            wallHeightController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxHeight;
+            wallDistanceController.transform.GetChild(0).GetComponent<Slider>().value = question.MidlePoint;
+            targetController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxDistance;
             prepareCannonUI();
         } else if (question.Type.CompareTo(PMQuestion.WALL_TYPE) == 0){
             cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
@@ -57,8 +53,8 @@ public class TestManager : MonoBehaviour {
         cannonVelocityController.SetActive(false);
     }
 
-    private void questionAnswered(){
-
+    public void questionAnswered(){
+        question.solved = TargetController.hit && WallController.hit;
     }
 
     public void endReview(){
@@ -71,5 +67,7 @@ public class TestManager : MonoBehaviour {
         cannonAngleController.SetActive(true);
         cannonVelocityController.SetActive(true);
     }
+
+    public PMQuestion Question { get => question; set => question = value; }
 
 }

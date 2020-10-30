@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
@@ -8,10 +6,6 @@ public class PauseMenuController : MonoBehaviour
     public static bool isPaused = false;
     public TestManager testManager;
     public Button modeButton;
-    // Update is called once per frame
-    void Update() {
-        
-    }
 
     public void pause(){
         gameObject.SetActive(true);
