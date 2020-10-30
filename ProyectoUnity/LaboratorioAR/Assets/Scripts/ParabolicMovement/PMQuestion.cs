@@ -1,21 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PMQuestion {
 
     public const string CANNON_TYPE  = "cannon";
     public const string GRAVITY_TYPE = "gravity";
     public const string WALL_TYPE = "wall";
-    private string type;
-    private string statement;
-    private float angle;
-    private float velocity;
-    private float maxDistance;
-    private float maxHeight;
-    private float midlePoint;
-    private float gravity;
+    private const string SIMULATION = "ParabolicMovement";
+    public string type;
+    public string statement;
+    public float angle;
+    public float velocity;
+    public float maxDistance;
+    public float maxHeight;
+    public float midlePoint;
+    public float gravity;
     public bool solved;
+
+    public PMQuestion(string type, float angle, float velocity, float maxDistance, float maxHeight, float midlePoint, float gravity){
+        this.type = type;
+        this.angle = angle;
+        this.velocity = velocity;
+        this.maxDistance = maxDistance;
+        this.maxHeight = maxHeight;
+        this.midlePoint = midlePoint;
+        this.gravity = gravity;
+        if (type.CompareTo(CANNON_TYPE) == 0){
+            statement = string.Format("Prepare el cañon para disparar un proyectil que pase por encima de la pared que mide {0}m y esta a {1}m, y ,"+
+                                        "golpee el objetivo que se encuentra a {2}m", maxHeight, midlePoint, maxDistance);
+        } else {
+            statement = string.Format("El cañon esta dispuesto para disparar a una velociadad de {0} a un angulo de {1},"+
+                                        "coloque el objetivo en la distancia maxima y la pared debajo de la altura maxima", velocity, angle);
+        }
+    }
 
     public PMQuestion(){
             angle = Random.Range(20.0f, 75.0f);
@@ -42,6 +58,7 @@ public class PMQuestion {
         }
         solved = false;
     }
+
 
     public string Type { get => type; set => type = value; }
     public string Statement { get => statement; set => statement = value; }
