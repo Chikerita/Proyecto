@@ -11,17 +11,14 @@ public class PMFormController : MonoBehaviour {
     public InputField wallHeight;
     public InputField wallDistance;
 
-    public string generateJSON(){
+    public PMQuestion generateQuestion(){
         string type = this.type.options[this.type.value].text;
         float angle = float.Parse(this.angle.text);
         float velocity = float.Parse(this.velocity.text);
         float targetDistance = float.Parse(this.targetDistance.text);
         float wallHeight = float.Parse(this.wallHeight.text);
         float wallDistance = float.Parse(this.wallDistance.text);
-        PMQuestion question = new PMQuestion(type, angle, velocity, targetDistance, wallHeight, wallDistance, 9.8f);
-        string temp = JsonUtility.ToJson(question);
-        Debug.Log(temp);
-        return temp;
+        return new PMQuestion(type, angle, velocity, targetDistance, wallHeight, wallDistance, 9.8f);
     }
 
     public void delete(){
