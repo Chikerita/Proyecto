@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -21,18 +22,18 @@ public class PauseMenuController : MonoBehaviour
 
     public void changeMode(){
         resume();
-        if(UIController.inReview){
-            UIController.inReview = false;
+        if(UIController.state == 1){
+            UIController.state = 0;
             modeButton.GetComponentInChildren<Text>().text = "Iniciar repaso";
             testManager.endReview();
         } else {
-            UIController.inReview = true;
+            UIController.state = 1;
             modeButton.GetComponentInChildren<Text>().text = "Terminar repaso";
-            testManager.presentQuestion();
+            testManager.presentRandomQuestion();
         }
     }
 
-    public void quit(){
-        Application.Quit();
+    public void exitToMainMenu(){
+        SceneManager.LoadScene(0);
     }
 }

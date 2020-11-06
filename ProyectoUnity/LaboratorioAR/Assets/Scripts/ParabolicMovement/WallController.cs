@@ -17,4 +17,8 @@ public class WallController : MonoBehaviour {
     public void changeDistance(float value){
         transform.parent.position = new Vector3(value, transform.parent.position.y, transform.parent.position.z);
     }
+
+    public void resetColision(){
+        hit = false;
+    }
 }

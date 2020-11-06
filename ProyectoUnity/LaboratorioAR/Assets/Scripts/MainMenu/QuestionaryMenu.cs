@@ -7,12 +7,31 @@ public class QuestionaryMenu : MonoBehaviour {
 
     public GameObject buttonPrefab;
     public Transform listviewContent;
+    public QuestionaryHandler questionaryHandler;
 
     void OnEnable(){
-        StartCoroutine(GetText());
+        //StartCoroutine(GetQuestionarys());
+
+
+
+
+
+        Questionary [] arr = {new Questionary()};
+        arr[0].questions = new PMQuestion[2];
+        arr[0].questions[0] = new PMQuestion(PMQuestion.CANNON_TYPE, 53f, 15f, 22f, 7.32f, 11f, -9.8f);
+        arr[0].questions[1] = new PMQuestion(PMQuestion.CANNON_TYPE, 35f, 15f, 60f, 7.32f, 11f, -9.8f);
+            foreach (Questionary item in arr){
+                GameObject button = (GameObject) Instantiate (buttonPrefab);
+			    button.GetComponentInChildren<Text>().text = item.questionaryName;
+			    button.GetComponent<Button>().onClick.AddListener(() => {
+                    QuestionaryHandler.questionary = item;
+                    questionaryHandler.startQuestionary();
+                });
+			    button.transform.SetParent(listviewContent, false);
+            }
     }
  
-    IEnumerator GetText() {
+    IEnumerator GetQuestionarys() {
         UnityWebRequest req = UnityWebRequest.Get("http://localhost:3000/getp");
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
@@ -25,7 +44,8 @@ public class QuestionaryMenu : MonoBehaviour {
                 GameObject button = (GameObject) Instantiate (buttonPrefab);
 			    button.GetComponentInChildren<Text>().text = item.questionaryName;
 			    button.GetComponent<Button>().onClick.AddListener(() => {
-                    Debug.Log(button.GetComponentInChildren<Text>().text);
+                    QuestionaryHandler.questionary = item;
+                    questionaryHandler.startQuestionary();
                 });
 			    button.transform.SetParent(listviewContent, false);
             }

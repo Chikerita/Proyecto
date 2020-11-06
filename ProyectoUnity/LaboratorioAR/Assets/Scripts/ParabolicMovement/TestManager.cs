@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class TestManager : MonoBehaviour {
 
-    private PMQuestion question;
+    public PMQuestion question;
     public GameObject statementText;
     public GameObject cannonAngleController;
     public GameObject cannonVelocityController;
@@ -14,24 +14,50 @@ public class TestManager : MonoBehaviour {
     public GameObject targetToggle;
     public GameObject wallContainer;
 
+    public void presentRandomQuestion(){
+        float angle = Random.Range(20.0f, 75.0f);
+        float velocity = Random.Range(15.0f, 27.0f);
+        string type;
+        float maxDistance;
+        float maxHeight;
+        float midlePoint;
+        float gravity;
+        string statement;
+//      if(Random.Range(0f, 1f) > 0.5f){
+        if(true){
+            type = PMQuestion.CANNON_TYPE;
+            maxDistance = 0.2038f * Mathf.Pow(velocity, 2) * Mathf.Sin((angle * Mathf.PI) / 180) * Mathf.Cos((angle * Mathf.PI) / 180);
+            maxHeight = Mathf.Pow(velocity * Mathf.Sin((angle * Mathf.PI) / 180), 2) / 19.62f;
+            midlePoint = maxDistance / 2f;
+            gravity = -9.81f;
+//            angle = -1f;
+//            velocity = -1f;
+            statement = string.Format("Prepare el cañon para disparar un proyectil que pase por encima de la pared que mide {0}m y esta a {1}m, y "+
+                                        "golpee el objetivo que se encuentra a {2}m", maxHeight.ToString("F3"), midlePoint.ToString("F3"), maxDistance.ToString("F3"));
+        } else {
+            type = PMQuestion.WALL_TYPE;
+            maxDistance = -1f;
+            maxHeight = -1f;
+            midlePoint = -1f;
+            gravity = -9.81f;
+            statement = string.Format("El cañon esta dispuesto para disparar a una velociadad de {0} a un angulo de {1},"+
+                                        "coloque el objetivo en la distancia maxima y la apertura de la pared a la altura maxima", velocity.ToString("F3"), angle.ToString("F3"));
+        }
+        presentQuestion(new PMQuestion(type, angle, velocity, maxDistance, maxHeight, midlePoint, gravity));
+    }
 
-    public void presentQuestion(){
+    public void presentQuestion(PMQuestion question){
+        this.question = question;
         wallContainer.SetActiveRecursively(true);
-        question = new PMQuestion();
         statementText.GetComponent<Text>().text = question.Statement;
+        cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
+        cannonVelocityController.transform.GetChild(0).GetComponent<Slider>().value = question.Velocity;
+        wallHeightController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxHeight;
+        wallDistanceController.transform.GetChild(0).GetComponent<Slider>().value = question.MidlePoint;
+        targetController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxDistance;
         if (question.Type.CompareTo(PMQuestion.CANNON_TYPE) == 0){
-            cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
-            cannonVelocityController.transform.GetChild(0).GetComponent<Slider>().value = question.Velocity;
-            wallHeightController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxHeight;
-            wallDistanceController.transform.GetChild(0).GetComponent<Slider>().value = question.MidlePoint;
-            targetController.transform.GetChild(0).GetComponent<Slider>().value = question.MaxDistance;
             prepareCannonUI();
         } else if (question.Type.CompareTo(PMQuestion.WALL_TYPE) == 0){
-            cannonAngleController.transform.GetChild(0).GetComponent<Slider>().value = question.Angle;
-            cannonVelocityController.transform.GetChild(0).GetComponent<Slider>().value = question.Velocity;
-            wallHeightController.transform.GetChild(0).GetComponent<Slider>().value = 10f;
-            wallDistanceController.transform.GetChild(0).GetComponent<Slider>().value = 10f;
-            targetController.transform.GetChild(0).GetComponent<Slider>().value = 20f;
             prepareWallUI();
         }
     }
@@ -67,7 +93,5 @@ public class TestManager : MonoBehaviour {
         cannonAngleController.SetActive(true);
         cannonVelocityController.SetActive(true);
     }
-
-    public PMQuestion Question { get => question; set => question = value; }
 
 }

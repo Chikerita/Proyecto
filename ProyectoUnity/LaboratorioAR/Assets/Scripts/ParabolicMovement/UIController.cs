@@ -16,22 +16,27 @@ public class UIController : MonoBehaviour{
     public Slider targetDistanceSlider;
     public Text statsLabel;
     public TestManager testManager;
-    public PauseMenuController pauseMenu;
+    public GameObject pauseMenu;
+    public GameObject pauseButton;
     public GameObject answerMenu;
-    public static bool inReview = false;
+    public QuestionaryHandler questionaryHandler;
+    public static int state = 0; // 0: normal, 1: review, 2: quiz
 
-    // Start is called before the first frame update
     void Start(){
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        if(QuestionaryHandler.inQuestionary){
+            state = 2;
+            testManager.presentQuestion(QuestionaryHandler.questionary.questions[QuestionaryHandler.questionIndex]);
+            pauseButton.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && !answerMenu.activeInHierarchy){
             if(!PauseMenuController.isPaused){
-                pauseMenu.pause();
+                pauseMenu.GetComponent<PauseMenuController>().pause();
             } else {
-                pauseMenu.resume();
+                pauseMenu.GetComponent<PauseMenuController>().resume();
             }
         }
     }
@@ -39,7 +44,7 @@ public class UIController : MonoBehaviour{
     public void checkAnswer(){
         answerMenu.SetActive(true);
         testManager.questionAnswered();
-        if(testManager.Question.solved){
+        if(testManager.question.solved){
             answerMenu.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Respuesta correcta";
             answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Siguiente pregunta";
         } else {
@@ -53,8 +58,12 @@ public class UIController : MonoBehaviour{
     }
 
     public void questionMenu(){
-        if(testManager.Question.solved) testManager.presentQuestion();
-        answerMenu.SetActive(false);
+        if(state == 1){
+            if(testManager.question.solved) testManager.presentRandomQuestion();
+            answerMenu.SetActive(false);
+        } else if(state == 2){
+            if(testManager.question.solved) questionaryHandler.questionSolved();
+        }
     }
 
     public void updateTargetDistanceInput(float value){
