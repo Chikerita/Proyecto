@@ -19,7 +19,7 @@ public class QuestionaryMenu : MonoBehaviour {
         Questionary [] arr = {new Questionary("Nevo cuestionario")};
         arr[0].questions = new PMQuestion[2];
         arr[0].questions[0] = new PMQuestion(PMQuestion.CANNON_TYPE, 53f, 15f, 22f, 7.32f, 11f, -9.8f);
-        arr[0].questions[1] = new PMQuestion(PMQuestion.CANNON_TYPE, 35f, 15f, 60f, 7.32f, 11f, -9.8f);
+        arr[0].questions[1] = new PMQuestion(PMQuestion.CANNON_TYPE, 35f, 15f, 22f, 7.32f, 11f, -9.8f);
             foreach (Questionary item in arr){
                 GameObject button = (GameObject) Instantiate (buttonPrefab);
 			    button.GetComponentInChildren<Text>().text = item.questionaryName;

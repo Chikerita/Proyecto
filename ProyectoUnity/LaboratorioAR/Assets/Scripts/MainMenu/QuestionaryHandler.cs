@@ -17,14 +17,16 @@ public class QuestionaryHandler : MonoBehaviour {
     }
 
     public void questionSolved(){
+        questionIndex++;
         if(questionIndex < questionary.questions.Length){
-            questionIndex++;
             if(questionary.questions[questionIndex].SIMULATION.CompareTo(SceneManager.GetActiveScene().name) == 0){
                 TestManager temp = GameObject.Find("TestManager").GetComponent<TestManager>();
                 temp.presentQuestion(questionary.questions[questionIndex]);
             } else {
                 StartCoroutine(loadAsynchronously(questionary.questions[questionIndex].SIMULATION));
             }
+        } else {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

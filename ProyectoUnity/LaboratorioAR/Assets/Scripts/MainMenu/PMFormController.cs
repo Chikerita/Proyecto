@@ -9,7 +9,6 @@ public class PMFormController : MonoBehaviour {
     public InputField targetDistance;
     public InputField wallHeight;
     public InputField wallDistance;
-    public Toggle randomToggle;
 
     public PMQuestion generateQuestion(){
         string type = this.type.options[this.type.value].text;
@@ -26,17 +25,13 @@ public class PMFormController : MonoBehaviour {
             GameObject [] arr = GameObject.FindGameObjectsWithTag("CannonOptions");
             foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = false;
             arr = GameObject.FindGameObjectsWithTag("WallOptions");
-            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = !randomToggle.isOn;
+            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = true;
         } else if (value == 1){
             GameObject [] arr = GameObject.FindGameObjectsWithTag("WallOptions");
             foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = false;
             arr = GameObject.FindGameObjectsWithTag("CannonOptions");
-            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = !randomToggle.isOn;
+            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = true;
         }
-    }
-
-    public void hiddeOptions(){
-        hiddeOptions(type.value);
     }
 
     public void delete(){

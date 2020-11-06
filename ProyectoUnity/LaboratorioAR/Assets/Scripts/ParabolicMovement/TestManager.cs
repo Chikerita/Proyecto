@@ -23,15 +23,15 @@ public class TestManager : MonoBehaviour {
         float midlePoint;
         float gravity;
         string statement;
-//      if(Random.Range(0f, 1f) > 0.5f){
-        if(true){
+        if(Random.Range(0f, 1f) > 0.5f){        //Comentar para debug
+//        if(true){
             type = PMQuestion.CANNON_TYPE;
             maxDistance = 0.2038f * Mathf.Pow(velocity, 2) * Mathf.Sin((angle * Mathf.PI) / 180) * Mathf.Cos((angle * Mathf.PI) / 180);
             maxHeight = Mathf.Pow(velocity * Mathf.Sin((angle * Mathf.PI) / 180), 2) / 19.62f;
             midlePoint = maxDistance / 2f;
             gravity = -9.81f;
-//            angle = -1f;
-//            velocity = -1f;
+            angle = -1f;                        //Comentar estas lineas para debug
+            velocity = -1f;                     //
             statement = string.Format("Prepare el cañon para disparar un proyectil que pase por encima de la pared que mide {0}m y esta a {1}m, y "+
                                         "golpee el objetivo que se encuentra a {2}m", maxHeight.ToString("F3"), midlePoint.ToString("F3"), maxDistance.ToString("F3"));
         } else {
