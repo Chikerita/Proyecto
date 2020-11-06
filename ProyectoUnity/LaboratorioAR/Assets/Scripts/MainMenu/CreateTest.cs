@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using TMPro;
 
 public class CreateTest : MonoBehaviour {
 
     public GameObject pmFormPrefab;
     public Transform listViewContent;
-    private string questionaryJson;
+    public TMP_InputField nameInput;
 
     public void newPMQuestion(){
         GameObject form = (GameObject) Instantiate (pmFormPrefab);
@@ -14,7 +15,8 @@ public class CreateTest : MonoBehaviour {
     }
 
     public void create(){
-        Questionary questionary = new Questionary();
+        Debug.Log(nameInput.text);
+        Questionary questionary = new Questionary(nameInput.text);
         questionary.questions = new PMQuestion[listViewContent.transform.childCount];
         int index = 0;
         foreach (Transform child in listViewContent.transform){

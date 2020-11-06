@@ -5,7 +5,7 @@ public class Questionary {
     public string questionaryName;
     public PMQuestion [] questions;
 
-    public Questionary(){
-        questionaryName = "Nuevo cuestionario";
+    public Questionary(string name){
+        questionaryName = name;
     }
 }
