@@ -32,7 +32,7 @@ public class QuestionaryMenu : MonoBehaviour {
     }
  
     IEnumerator GetQuestionarys() {
-        UnityWebRequest req = UnityWebRequest.Get("http://localhost:3000/getp");
+        UnityWebRequest req = UnityWebRequest.Get("http://192.168.0.12:3000/getp");
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
         if(req.isNetworkError || req.isHttpError) {

@@ -22,19 +22,18 @@ public class PMFormController : MonoBehaviour {
 
     public void hiddeOptions(int value){
         if(value == 0){
-            GameObject [] arr = GameObject.FindGameObjectsWithTag("CannonOptions");
-            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = false;
-            arr = GameObject.FindGameObjectsWithTag("WallOptions");
-            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = true;
+            angle.interactable = false;
+            velocity.interactable = false;
+            targetDistance.interactable = true;
+            wallHeight.interactable = true;
+            wallDistance.interactable = true;
         } else if (value == 1){
-            GameObject [] arr = GameObject.FindGameObjectsWithTag("WallOptions");
-            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = false;
-            arr = GameObject.FindGameObjectsWithTag("CannonOptions");
-            foreach (GameObject item in arr) item.GetComponent<InputField>().interactable = true;
+            angle.interactable = true;
+            velocity.interactable = true;
+            targetDistance.interactable = false;
+            wallHeight.interactable = false;
+            wallDistance.interactable = false;
         }
     }
 
-    public void delete(){
-        GameObject.Destroy(gameObject);
-    }
 }

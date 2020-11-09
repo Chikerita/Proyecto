@@ -30,14 +30,17 @@ public class BulletController : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collisionInfo){
+        string name = collisionInfo.collider.name;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        if (collisionInfo.collider.name.CompareTo("Ground") == 0 && flying) flying = false;
-        if (collisionInfo.collider.name.CompareTo("Target") == 0) {
+        if (name.CompareTo("Ground") == 0 && flying) flying = false;
+        if (name.CompareTo("Target") == 0) {
             TargetController.hit = true;
             flying = false;
         }
-        if(!UI.transform.GetChild(0).GetComponent<Button>().interactable && UIController.state > 0) UI.GetComponent<UIController>().checkAnswer();
+        if (name.CompareTo("Ground") == 0|| name.CompareTo("Target") == 0){
+            if(!UI.transform.GetChild(0).GetComponent<Button>().interactable && UIController.state > 0) UI.GetComponent<UIController>().checkAnswer();
+        }
     }
 
     void OnTriggerEnter(Collider triggerInfo){

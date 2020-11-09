@@ -34,9 +34,9 @@ public class MainMenuController : MonoBehaviour {
         }
     }
 
-    public void clearQuestionList(GameObject listViewContent){
+    public void clearList(GameObject listViewContent){
         foreach (Transform child in listViewContent.transform){
-            child.GetComponent<PMFormController>().delete();
+            GameObject.Destroy(child.gameObject);
         }
     }
 
