@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour {
     private float maxHeight;
     private float maxDistance;
     private float flightTime;
-    private bool flying;
+    public static bool flying;
 
     void Start(){
         angle = 45f;
@@ -32,7 +32,16 @@ public class BulletController : MonoBehaviour {
     void OnCollisionEnter(Collision collisionInfo){
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        flying = false;
+        if (collisionInfo.collider.name.CompareTo("Ground") == 0 && flying) flying = false;
+        if (collisionInfo.collider.name.CompareTo("Target") == 0) {
+            TargetController.hit = true;
+            flying = false;
+        }
+        if(!UI.transform.GetChild(0).GetComponent<Button>().interactable && UIController.state > 0) UI.GetComponent<UIController>().checkAnswer();
+    }
+
+    void OnTriggerEnter(Collider triggerInfo){
+        if (triggerInfo.name.CompareTo("WallTrigger") == 0) WallController.hit = true;
     }
 
     public void shoot(){
@@ -44,15 +53,15 @@ public class BulletController : MonoBehaviour {
     }
 
     public void resetSimulation(){
-        UI.GetComponent<UIController>().resetStats();
         gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
+        flying = false;
+        UI.GetComponent<UIController>().resetStats();
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        UI.transform.GetChild(0).GetComponent<Button>().interactable = true;
-        flying = false;
         maxHeight = 0f;
         maxDistance = 0f;
         flightTime = 0f;
+        UI.transform.GetChild(0).GetComponent<Button>().interactable = true;
     }
 
     public void updateAngle(float value){
