@@ -22,7 +22,7 @@ MonoBehaviour:
     virtualSceneScaleFactor: 70
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
-    version: 9.4.6
+    version: 9.5.4
     eulaAcceptedVersions: '{"Values":["9.3","9.4","8.1","8.5","9.5"]}'
   database:
     disableModelExtraction: 0

@@ -5,7 +5,7 @@ public class TargetController : MonoBehaviour {
     public static bool hit;
 
     public void changeDistance(float value){
-        gameObject.transform.position = new Vector3(value, transform.position.y, transform.position.z);
+        gameObject.transform.localPosition = new Vector3(value, transform.localPosition.y, transform.localPosition.z);
     }
 
     public void resetColision(){
