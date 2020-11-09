@@ -11,6 +11,7 @@ public class QuestionaryHandler : MonoBehaviour {
     public static int questionIndex;
 
     public void startQuestionary(){
+        Debug.Log(questionary.questions[questionIndex].SIMULATION);
         inQuestionary = true;
         questionIndex = 0;
         StartCoroutine(loadAsynchronously(questionary.questions[questionIndex].SIMULATION));
