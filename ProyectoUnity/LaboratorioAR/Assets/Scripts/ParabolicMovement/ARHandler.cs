@@ -16,14 +16,14 @@ public class ARHandler : MonoBehaviour {
     
     private void activateAR(){
         normalCamera.SetActive(false);
-        arCamera.SetActiveRecursively(true);
+        arCamera.SetActiveRecursivelyExt(true);
         stage.SetActive(true);
         objects.transform.SetParent(stage.transform, false);
     }
 
     private void activateNormal(){
         objects.transform.SetParent(null, false);
-        arCamera.SetActiveRecursively(false);
+        arCamera.SetActiveRecursivelyExt(false);
         stage.SetActive(false);
         normalCamera.SetActive(true);
     }
