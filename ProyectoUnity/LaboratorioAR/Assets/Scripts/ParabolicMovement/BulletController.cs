@@ -11,7 +11,6 @@ public class BulletController : MonoBehaviour {
     private float flightTime;
     private bool flying;
 
-    // Start is called before the first frame update
     void Start(){
         angle = 45f;
         initialVelocity = 20f;
@@ -21,7 +20,6 @@ public class BulletController : MonoBehaviour {
         flying = false;
     }
 
-    // Update is called once per frame
     void Update(){
         if (flying){
             flightTime += Time.deltaTime;
@@ -37,9 +35,7 @@ public class BulletController : MonoBehaviour {
         flying = false;
     }
 
-    //Shoots the bullet whit the proper angle and initial velocity
     public void shoot(){
-        UI.transform.GetChild(0).GetComponent<Button>().interactable = false;
         float xComponent = Mathf.Cos((angle * Mathf.PI) / 180) * initialVelocity;
         float yComponent = Mathf.Sin((angle * Mathf.PI) / 180) * initialVelocity;
         Vector3 vector = new Vector3(xComponent, yComponent, 0);
@@ -59,12 +55,10 @@ public class BulletController : MonoBehaviour {
         flightTime = 0f;
     }
 
-    //Updates the angle when it's changed from the slider or the input
     public void updateAngle(float value){
         angle = value;
     }
 
-    //Updates the initial velocity when it's changed from the slider or the input
     public void updateVelocity(float value){
         initialVelocity = value;
     }
