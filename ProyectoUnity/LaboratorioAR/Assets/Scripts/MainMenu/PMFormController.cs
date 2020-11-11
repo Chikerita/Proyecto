@@ -9,9 +9,10 @@ public class PMFormController : MonoBehaviour {
     public InputField targetDistance;
     public InputField wallHeight;
     public InputField wallDistance;
+    private string [] typeArr = {"cannon", "wall"};
 
     public PMQuestion generateQuestion(){
-        string type = this.type.options[this.type.value].text;
+        string type = typeArr[this.type.value];
         float angle = float.Parse(this.angle.text);
         float velocity = float.Parse(this.velocity.text);
         float targetDistance = float.Parse(this.targetDistance.text);
@@ -34,6 +35,10 @@ public class PMFormController : MonoBehaviour {
             wallHeight.interactable = false;
             wallDistance.interactable = false;
         }
+    }
+
+    public void delete(){
+        Destroy(gameObject);
     }
 
 }

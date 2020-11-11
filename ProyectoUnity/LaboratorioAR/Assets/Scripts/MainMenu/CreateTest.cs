@@ -16,16 +16,16 @@ public class CreateTest : MonoBehaviour {
     }
 
     public void create(){
-        Debug.Log(nameInput.text);
         Questionary questionary = new Questionary(nameInput.text);
         questionary.questions = new PMQuestion[listViewContent.transform.childCount];
         int index = 0;
         foreach (Transform child in listViewContent.transform){
             questionary.questions[index] = child.GetComponent<PMFormController>().generateQuestion();
+            Debug.Log("Tipo:   " + questionary.questions[index].type);
+            Debug.Log("Pregunta:   " + questionary.questions[index].statement);
             index++;
         }
         string json = JsonUtility.ToJson(questionary);
-        Debug.Log(json);
         StartCoroutine(SendQuestionary(json));
     }
 

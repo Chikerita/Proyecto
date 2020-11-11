@@ -25,11 +25,11 @@ public class PMQuestion {
         this.midlePoint = midlePoint;
         this.gravity = gravity;
         if (type.CompareTo(CANNON_TYPE) == 0){
-            statement = string.Format("Prepare el cañon para disparar un proyectil que pase por encima de la pared que mide {0}m y esta a {1}m, y ,"+
-                                        "golpee el objetivo que se encuentra a {2}m", maxHeight, midlePoint, maxDistance);
+            statement = string.Format("Prepare el cañon para disparar un proyectil que pase por el espacio de la pared que esta a {0}m de altura y a {1}m del cañon, y "+
+                                        "golpee el objetivo que se encuentra a {2}m del cañon", maxHeight.ToString("F3"), midlePoint.ToString("F3"), maxDistance.ToString("F3"));
         } else {
-            statement = string.Format("El cañon esta dispuesto para disparar a una velociadad de {0} a un angulo de {1},"+
-                                        "coloque el objetivo en la distancia maxima y la pared debajo de la altura maxima", velocity, angle);
+            statement = string.Format("El cañon esta dispuesto para disparar a una velociadad de {0}m/s a un angulo de {1}°,"+
+                                        "coloque el objetivo en la distancia maxima y el espacio de la pared en la altura maxima del disparo", velocity.ToString("F3"), angle.ToString("F3"));
         }
     }
 
