@@ -30,7 +30,7 @@ public class CreateTest : MonoBehaviour {
     }
 
     IEnumerator SendQuestionary(string json){
-        UnityWebRequest req = UnityWebRequest.Put("http://localhost:3000/put", json);
+        UnityWebRequest req = UnityWebRequest.Put("https://servidor-laboratorioar.herokuapp.com/put", json);
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
         if(req.isNetworkError || req.isHttpError) {
