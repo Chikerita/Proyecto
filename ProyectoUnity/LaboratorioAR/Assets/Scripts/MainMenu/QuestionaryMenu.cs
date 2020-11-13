@@ -38,6 +38,7 @@ public class QuestionaryMenu : MonoBehaviour {
         if(req.isNetworkError || req.isHttpError) {
             Debug.Log(req.error);
         } else {
+            Debug.Log(req.downloadHandler.text);
             Questionary [] arr = JsonHelper.FromJson<Questionary>("{\"Items\":" + req.downloadHandler.text + "}");
             foreach (Questionary item in arr){
                 GameObject button = (GameObject) Instantiate (buttonPrefab);
