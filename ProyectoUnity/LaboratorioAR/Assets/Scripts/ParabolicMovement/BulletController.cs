@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BulletController : MonoBehaviour {
 
-    public Canvas UI;
+    public UIController UI;
     private float angle;
     private float initialVelocity;
     private float maxHeight;
@@ -25,7 +25,7 @@ public class BulletController : MonoBehaviour {
             flightTime += Time.deltaTime;
             maxHeight = Mathf.Max(maxHeight, gameObject.transform.localPosition.y);
             maxDistance = Mathf.Max(maxDistance, gameObject.transform.localPosition.x);
-            UI.GetComponent<UIController>().updateStats(maxHeight, maxDistance, flightTime);
+            UI.updateStats(maxHeight, maxDistance, flightTime);
         }
     }
 
@@ -39,7 +39,7 @@ public class BulletController : MonoBehaviour {
             flying = false;
         }
         if (name.CompareTo("Ground") == 0|| name.CompareTo("Target") == 0){
-            if(!UI.transform.GetChild(0).GetComponent<Button>().interactable && UIController.state > 0) UI.GetComponent<UIController>().checkAnswer();
+            if(!UI.shootButton.GetComponent<Button>().interactable && UIController.state > 0) UI.checkAnswer();
         }
     }
 
@@ -58,13 +58,13 @@ public class BulletController : MonoBehaviour {
     public void resetSimulation(){
         gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
         flying = false;
-        UI.GetComponent<UIController>().resetStats();
+        UI.resetStats();
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         maxHeight = 0f;
         maxDistance = 0f;
         flightTime = 0f;
-        UI.transform.GetChild(0).GetComponent<Button>().interactable = true;
+        UI.changeShootButtonInteractable(true);
     }
 
     public void updateAngle(float value){

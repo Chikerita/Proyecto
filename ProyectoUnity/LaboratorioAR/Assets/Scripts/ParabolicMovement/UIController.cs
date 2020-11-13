@@ -4,21 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour{
 
-    public InputField angleInput;
-    public Slider angleSlider;
-    public InputField velInput;
-    public Slider velSlider;
-    public InputField heightInput;
-    public Slider heightSlider;
-    public InputField wallDistanceInput;
-    public Slider wallDistanceSlider;
-    public InputField targetDistanceInput;
-    public Slider targetDistanceSlider;
     public Text statsLabel;
     public TestManager testManager;
-    public GameObject pauseMenu;
-    public GameObject pauseButton;
     public GameObject answerMenu;
+    public GameObject pauseButton;
+    public GameObject shootButton;
     public QuestionaryHandler questionaryHandler;
     public static int state = 0; // 0: normal, 1: review, 2: quiz
 
@@ -31,19 +21,9 @@ public class UIController : MonoBehaviour{
         }
     }
 
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape) && !answerMenu.activeInHierarchy){
-            if(!PauseMenuController.isPaused){
-                pauseMenu.GetComponent<PauseMenuController>().pause();
-            } else {
-                pauseMenu.GetComponent<PauseMenuController>().resume();
-            }
-        }
-    }
-
     public void checkAnswer(){
-        answerMenu.SetActive(true);
         testManager.questionAnswered();
+        answerMenu.SetActive(true);
         if(testManager.question.solved){
             answerMenu.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Respuesta correcta";
             answerMenu.transform.GetChild(1).GetComponentInChildren<Text>().text = "Siguiente pregunta";
@@ -66,44 +46,8 @@ public class UIController : MonoBehaviour{
         }
     }
 
-    public void updateTargetDistanceInput(float value){
-        targetDistanceInput.text = value.ToString();
-    }
-
-    public void updateTargetDistanceSlider(string text){
-        targetDistanceSlider.value = float.Parse(text);
-    }
-
-    public void updateWallHeightInput(float value){
-        heightInput.text = value.ToString();
-    }
-
-    public void updateWallHeightSlider(string text){
-        heightSlider.value = float.Parse(text);
-    }
-
-    public void updateWallDistanceInput(float value){
-        wallDistanceInput.text = value.ToString();
-    }
-
-    public void updateWallDistanceSlider(string text){
-        wallDistanceSlider.value = float.Parse(text);
-    }
-
-    public void updateAngleInput(float value){
-        angleInput.text = value.ToString();
-    }
-
-    public void updateAngleSlider(string text){
-        angleSlider.value = float.Parse(text);
-    }
-
-    public void updateVelocityInput(float value){
-        velInput.text = value.ToString();
-    }
-
-    public void updateVelocitySlider(string text){
-        velSlider.value = float.Parse(text);
+    public void changeShootButtonInteractable(bool interactable){
+        shootButton.GetComponent<Button>().interactable = interactable;
     }
 
     public void updateStats(float yPosition, float xPosition, float flightTime){
