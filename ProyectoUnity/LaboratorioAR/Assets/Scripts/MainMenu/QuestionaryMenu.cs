@@ -33,6 +33,8 @@ public class QuestionaryMenu : MonoBehaviour {
  
     IEnumerator GetQuestionarys() {
         UnityWebRequest req = UnityWebRequest.Get("https://servidor-laboratorioar.herokuapp.com/get");
+        //UnityWebRequest req = UnityWebRequest.Get("http://localhost:3000/get");
+
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
         if(req.isNetworkError || req.isHttpError) {
