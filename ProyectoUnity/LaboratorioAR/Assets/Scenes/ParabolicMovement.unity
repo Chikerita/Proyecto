@@ -285,8 +285,8 @@ RectTransform:
   - {fileID: 1254517194}
   - {fileID: 1646345390}
   - {fileID: 1689613854}
-  - {fileID: 421139741}
   - {fileID: 2065073881}
+  - {fileID: 421139741}
   - {fileID: 564535611}
   - {fileID: 1491818569}
   - {fileID: 442110276}
@@ -643,7 +643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &421139741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -656,7 +656,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 176209306}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1699,6 +1699,7 @@ MonoBehaviour:
     gravity: -9.81
     solved: 0
   statementText: {fileID: 421139740}
+  statisticsText: {fileID: 2065073880}
   cannonController: {fileID: 242826061}
   wallController: {fileID: 1116761950}
   targetController: {fileID: 1705516933}
@@ -4572,7 +4573,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 176209306}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -4699,7 +4700,7 @@ PrefabInstance:
     - target: {fileID: 8297083907587966219, guid: a2c4540892fbc9540be946db8d127fd6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 346
+      value: 348
       objectReference: {fileID: 0}
     - target: {fileID: 8297083907587966219, guid: a2c4540892fbc9540be946db8d127fd6,
         type: 3}
@@ -4979,6 +4980,16 @@ PrefabInstance:
     - target: {fileID: 8297083908483224745, guid: a2c4540892fbc9540be946db8d127fd6,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297083908483224745, guid: a2c4540892fbc9540be946db8d127fd6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 238.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297083908846162877, guid: a2c4540892fbc9540be946db8d127fd6,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8297083908846162878, guid: a2c4540892fbc9540be946db8d127fd6,

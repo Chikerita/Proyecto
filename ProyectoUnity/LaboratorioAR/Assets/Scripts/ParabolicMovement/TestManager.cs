@@ -5,6 +5,7 @@ public class TestManager : MonoBehaviour {
 
     public PMQuestion question;
     public GameObject statementText;
+    public GameObject statisticsText;
     public GameObject cannonController;
     public GameObject wallController;
     public GameObject targetController;
@@ -55,12 +56,14 @@ public class TestManager : MonoBehaviour {
     }
 
     private void prepareCannonUI(){
+        statisticsText.SetActive(false);
         statementText.SetActive(true);
         wallController.SetActive(false);
         targetController.SetActive(false);
     }
 
     private void prepareWallUI(){
+        statisticsText.SetActive(false);
         statementText.SetActive(true);
         cannonController.SetActive(false);
     }
@@ -78,6 +81,7 @@ public class TestManager : MonoBehaviour {
     }
 
     public void endReview(){
+        statisticsText.SetActive(true);
         statementText.SetActive(false);
         wallController.SetActive(true);
         targetController.SetActive(true);
