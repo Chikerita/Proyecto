@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour{
 
-    public Text statsLabel;
     public TestManager testManager;
+    public QuestionaryHandler questionaryHandler;
     public GameObject answerMenu;
     public GameObject pauseButton;
-    public GameObject shootButton;
-    public QuestionaryHandler questionaryHandler;
+    public GameObject showARButton;
+    public Button shootButton;
+    public Text statsLabel;
+    public static bool inARMode = false;
     public static int state = 0; // 0: normal, 1: review, 2: quiz
 
     void Start(){
@@ -47,7 +49,11 @@ public class UIController : MonoBehaviour{
     }
 
     public void changeShootButtonInteractable(bool interactable){
-        shootButton.GetComponent<Button>().interactable = interactable;
+        shootButton.interactable = interactable;
+    }
+
+    public void activateARUI(bool active){
+        showARButton.SetActive(active);
     }
 
     public void updateStats(float yPosition, float xPosition, float flightTime){
